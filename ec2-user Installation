@@ -10,13 +10,33 @@ cd /opt
 sudo yum install unzip vim wget tree git -y
 sudo wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.rpm
 sudo yum install jdk-8u131-linux-x64.rpm -y
-# 2. Add Jenkins Repository and  Install
+# check java version installed using "java-version"
+
+# 2. # Add Jenkins Repository and key  # rpm = redhad package management
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
-
 sudo cd /etc/yum.repos.d/  &&  cd /etc/yum.repos.d/
-
 sudo curl -O https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+# Install Jekins using nobest option to force-installing jenkins
 sudo yum -y install jenkins --nobest
+
+# start Jenkins service and verify Jenkins is running
 sudo systemctl start jenkins
 sudo systemctl enable jenkins
 sudo systemctl status jenkins
+
+
+
+# Help check to know if Jenkins is up and running
+curl -v localhost
+curl -v localhost:8080
+
+# Take note of address binding when installing servers with same port on a single serve.
+# use a different port numbers if it must be done
+# Access Jenkins from the browser
+curl ifconfig.co 
+<public-ip>:8080
+
+# get jenkins initial admin password
+# the path is found when on portal of localhost:8080
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
