@@ -17,5 +17,17 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 # Using the Initial Admin Password
 # Run the following command and copy the output:
+# the path is found when on portal of localhost:8080
 
-cat /var/lib/jenkins/secrets/initialAdminPassword
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+
+# Help check to know if Jenkins is up and running
+curl -v localhost
+curl -v localhost:8080
+
+# Take note of address binding when installing servers with same port on a single serve.
+# use a different port numbers if it must be done
+# Access Jenkins from the browser
+curl ifconfig.co 
+<public-ip>:8080
